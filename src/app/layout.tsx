@@ -20,7 +20,9 @@ interface Props {
 export default function RootLayout(props: Props) {
   return (
     <html lang="en">
-      <body className={`${nunitoSans.variable} antialiased`}>
+      <body
+        className={`${nunitoSans.variable} antialiased text-slate-100 font-normal`}
+      >
         {props.children}
       </body>
     </html>
