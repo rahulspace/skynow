@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Nunito_Sans } from "next/font/google";
 import "./globals.css";
 import { ReactNode } from "react";
+import { Analytics } from "@vercel/analytics/next";
 
 const nunitoSans = Nunito_Sans({
   variable: "--font-nunito-sans",
@@ -24,6 +25,7 @@ export default function RootLayout(props: Props) {
         className={`${nunitoSans.variable} antialiased text-slate-100 font-normal`}
       >
         {props.children}
+        <Analytics />
       </body>
     </html>
   );

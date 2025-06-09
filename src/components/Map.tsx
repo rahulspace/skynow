@@ -21,7 +21,6 @@ export default function Map(props: Props) {
         center: props.center,
         zoom: 10,
       });
-
       mapInstance.current.addControl(
         new maptilersdk.NavigationControl(),
         "top-right"
