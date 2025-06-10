@@ -5,10 +5,7 @@ import { redirect } from "next/navigation";
 type Response<Body> = Promise<Body | null>;
 
 function client() {
-  const instance = axios.create({
-    baseURL: process.env.NEXT_PUBLIC_API_URL,
-    withCredentials: true,
-  });
+  const instance = axios.create();
   const handleError = (error: unknown) => {
     const title = "Request failed";
     const message =
