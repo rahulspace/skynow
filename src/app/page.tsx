@@ -24,7 +24,7 @@ export default function Home() {
       <div className="grid md:grid-cols-3 lg:grid-cols-4 gap-5">
         <CurrentWeather />
         <div className="md:col-span-2">
-          <Map center={[-0.1276, 51.5072]} />
+          <Map />
         </div>
         <CitiesWeather />
       </div>

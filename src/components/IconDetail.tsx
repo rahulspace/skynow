@@ -2,7 +2,7 @@ import { LucideIcon } from "lucide-react";
 
 interface Props {
   icon: LucideIcon;
-  text: string;
+  text: string | number;
 }
 
 export default function IconDetail(props: Props) {

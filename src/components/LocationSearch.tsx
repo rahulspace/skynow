@@ -29,7 +29,7 @@ export default function LocationSearch() {
   const handleSelect = (location: SearchResultItem) => {
     setLocation("");
     setLocations([]);
-    replaceLocation(location.id);
+    replaceLocation(`${location.name},${location.region},${location.country}`);
   };
 
   return (

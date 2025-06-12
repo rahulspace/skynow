@@ -1,13 +1,11 @@
 import { useEffect, useRef } from "react";
 import * as maptilersdk from "@maptiler/sdk";
+import useWeatherStore from "@/stores/weatherStore";
 
-interface Props {
-  center: [number, number];
-}
-
-export default function Map(props: Props) {
+export default function Map() {
   const mapContainer = useRef<HTMLDivElement>(null);
   const mapInstance = useRef<maptilersdk.Map | null>(null);
+  const current = useWeatherStore((state) => state.current);
 
   useEffect(() => {
     const apiKey = process.env.NEXT_PUBLIC_MAPTILER_API_KEY;
@@ -18,7 +16,9 @@ export default function Map(props: Props) {
       mapInstance.current = new maptilersdk.Map({
         container: mapContainer.current,
         style: maptilersdk.MapStyle.STREETS,
-        center: props.center,
+        center: current
+          ? [current.location.lon, current.location.lat]
+          : [-0.1276, 51.5072],
         zoom: 10,
       });
       mapInstance.current.addControl(
@@ -39,13 +39,15 @@ export default function Map(props: Props) {
       mapInstance.current?.remove();
       mapInstance.current = null;
     };
-  }, [props.center]);
+  }, [current, current?.location]);
 
   return (
-    <div
-      ref={mapContainer}
-      style={{ height: 200 }}
-      className="rounded-2xl bg-slate-950/5 overflow-hidden"
-    />
+    current && (
+      <div
+        ref={mapContainer}
+        style={{ height: 200 }}
+        className="rounded-2xl bg-slate-950/5 overflow-hidden"
+      />
+    )
   );
 }
