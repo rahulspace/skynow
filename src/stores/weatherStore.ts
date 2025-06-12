@@ -1,5 +1,6 @@
 import weatherApi, { CurrentResult } from "@/apis/weatherApi";
 import { create } from "zustand";
+import { persist } from "zustand/middleware";
 import { immer } from "zustand/middleware/immer";
 
 interface Store {
@@ -14,18 +15,21 @@ const initialState = {
 } as const;
 
 const useWeatherStore = create<Store>()(
-  immer((set) => ({
-    ...initialState,
-    async replaceLocation(location) {
-      set((state) => {
-        state.location = location;
-      });
-      const current = await weatherApi.current(location);
-      set((state) => {
-        state.current = current;
-      });
-    },
-  }))
+  persist(
+    immer((set) => ({
+      ...initialState,
+      async replaceLocation(location) {
+        set((state) => {
+          state.location = location;
+        });
+        const current = await weatherApi.current(location);
+        set((state) => {
+          state.current = current;
+        });
+      },
+    })),
+    { name: "skyNow" }
+  )
 );
 
 export const weatherStore = useWeatherStore.getState;
