@@ -23,7 +23,6 @@ export default function CurrentWeather() {
           <Image
             src={urlUtil.appendWithHttps(current.current.condition.icon)}
             alt={current.current.condition.text}
-            className="w-20 h-20"
             width={80}
             height={80}
           />

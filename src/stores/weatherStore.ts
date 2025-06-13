@@ -6,13 +6,16 @@ import { immer } from "zustand/middleware/immer";
 interface Store {
   location: string | number;
   current: CurrentResult | null;
+  cities: CurrentResult[];
   replaceLocation(location: string | number): void;
+  replaceCities(cities: CurrentResult[]): void;
 }
 
 const initialState = {
   location: "",
   current: null,
-} as const;
+  cities: [],
+};
 
 const useWeatherStore = create<Store>()(
   persist(
@@ -25,6 +28,11 @@ const useWeatherStore = create<Store>()(
         const current = await weatherApi.current(location);
         set((state) => {
           state.current = current;
+        });
+      },
+      replaceCities(cities) {
+        set((state) => {
+          state.cities = cities;
         });
       },
     })),

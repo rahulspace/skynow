@@ -1,7 +1,29 @@
+import { useEffect } from "react";
 import Card from "./Card";
 import CityWeather from "./CityWeather";
+import weatherApi from "@/apis/weatherApi";
+import useWeatherStore from "@/stores/weatherStore";
+import { compact } from "lodash";
+import { useShallow } from "zustand/shallow";
 
 export default function CitiesWeather() {
+  const [cities, replaceCities] = useWeatherStore(
+    useShallow((state) => [state.cities, state.replaceCities])
+  );
+  useEffect(() => {
+    const fetchCities = async () => {
+      const cities = await Promise.all([
+        weatherApi.current("London"),
+        weatherApi.current("New York"),
+        weatherApi.current("Paris"),
+        weatherApi.current("Tokyo"),
+        weatherApi.current("Singapore"),
+      ]);
+      replaceCities(compact(cities));
+    };
+    fetchCities();
+  }, [replaceCities]);
+
   return (
     <Card>
       <div className="flex justify-between items-center">
@@ -15,11 +37,9 @@ export default function CitiesWeather() {
         </a>
       </div>
       <div className="flex flex-col mt-4 gap-1">
-        <CityWeather />
-        <CityWeather />
-        <CityWeather />
-        <CityWeather />
-        <CityWeather />
+        {cities.map((city) => (
+          <CityWeather city={city} key={city.location.name} />
+        ))}
       </div>
     </Card>
   );
