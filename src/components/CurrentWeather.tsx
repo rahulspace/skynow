@@ -12,7 +12,7 @@ export default function CurrentWeather() {
   return (
     current && (
       <Card>
-        <div className="flex items-center justify-between">
+        <div className="flex items-start justify-between gap-2">
           <h5>Current Weather</h5>
           <p>{current.location.name}</p>
         </div>

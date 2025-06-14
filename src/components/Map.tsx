@@ -45,7 +45,7 @@ export default function Map() {
     current && (
       <div
         ref={mapContainer}
-        style={{ height: 200 }}
+        style={{ height: 244 }}
         className="rounded-2xl bg-slate-950/5 overflow-hidden"
       />
     )

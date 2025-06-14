@@ -20,15 +20,23 @@ export default function LocationSearch() {
     []
   );
 
+  const clearState = () => {
+    setLocation("");
+    setLocations([]);
+  };
+
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     const { value } = event.target;
+    if (!value) {
+      clearState();
+      return;
+    }
     setLocation(value);
     debouncedSearch(value);
   };
 
   const handleSelect = (location: SearchResultItem) => {
-    setLocation("");
-    setLocations([]);
+    clearState();
     replaceLocation(`${location.name},${location.region},${location.country}`);
   };
 
@@ -41,7 +49,7 @@ export default function LocationSearch() {
           value={location}
           placeholder="Search for location"
           onChange={handleChange}
-          className="w-full outline-none placeholder:text-slate-200 text-sm font-light"
+          className="w-full outline-none text-slate-50 placeholder:text-slate-200 text-sm font-light"
         />
       </div>
       {!isEmpty(locations) && (
