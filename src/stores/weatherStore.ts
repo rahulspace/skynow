@@ -1,11 +1,11 @@
-import weatherApi, { CurrentResult } from "@/apis/weatherApi";
+import weatherApi, { CurrentResult, ForecastResult } from "@/apis/weatherApi";
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
 import { immer } from "zustand/middleware/immer";
 
 interface Store {
   location: string | number;
-  current: CurrentResult | null;
+  forecast: ForecastResult | null;
   cities: CurrentResult[];
   replaceLocation(location: string | number): void;
   replaceCities(cities: CurrentResult[]): void;
@@ -13,7 +13,7 @@ interface Store {
 
 const initialState = {
   location: "",
-  current: null,
+  forecast: null,
   cities: [],
 };
 
@@ -25,9 +25,9 @@ const useWeatherStore = create<Store>()(
         set((state) => {
           state.location = location;
         });
-        const current = await weatherApi.current(location);
+        const forecast = await weatherApi.forecast(location);
         set((state) => {
-          state.current = current;
+          state.forecast = forecast;
         });
       },
       replaceCities(cities) {
