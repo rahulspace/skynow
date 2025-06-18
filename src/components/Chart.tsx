@@ -31,12 +31,12 @@ export default function Chart(props: Props) {
         show: false,
       },
     },
-    colors: ["#E879F9"],
+    colors: ["#d946ef"],
     dataLabels: {
       enabled: true,
       formatter: (val: number) => `${val}°`,
       style: {
-        colors: ["#f9f3f4"],
+        colors: ["#f0abfc"],
       },
       background: {
         enabled: false,
@@ -53,7 +53,7 @@ export default function Chart(props: Props) {
       },
       labels: {
         style: {
-          colors: "#f9f3f4",
+          colors: "#f0abfc",
         },
       },
     },
@@ -79,7 +79,7 @@ export default function Chart(props: Props) {
         opacityFrom: 0.7,
         opacityTo: 0.2,
         stops: [0, 100],
-        gradientToColors: ["#E879F9"],
+        gradientToColors: ["#d946ef"],
       },
     },
   };

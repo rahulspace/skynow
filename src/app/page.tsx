@@ -19,7 +19,7 @@ export default function Home() {
   }, [location, replaceLocation]);
 
   return (
-    <div className="font-bold min-h-screen bg-linear-65 from-fuchsia-300 to-fuchsia-200">
+    <div className="font-bold min-h-screen bg-linear-65 from-fuchsia-400 to-fuchsia-300">
       <div className="flex flex-col gap-8 p-5 container mx-auto">
         <div className="max-w-52">
           <LocationSearch />
