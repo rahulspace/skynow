@@ -5,7 +5,7 @@ import useWeatherStore from "@/stores/weatherStore";
 export default function Map() {
   const mapContainer = useRef<HTMLDivElement>(null);
   const mapInstance = useRef<maptilersdk.Map | null>(null);
-  const current = useWeatherStore((state) => state.current);
+  const forecast = useWeatherStore((state) => state.forecast);
 
   useEffect(() => {
     const apiKey = process.env.NEXT_PUBLIC_MAPTILER_API_KEY;
@@ -16,8 +16,8 @@ export default function Map() {
       mapInstance.current = new maptilersdk.Map({
         container: mapContainer.current,
         style: maptilersdk.MapStyle.STREETS,
-        center: current
-          ? [current.location.lon, current.location.lat]
+        center: forecast
+          ? [forecast.location.lon, forecast.location.lat]
           : [-0.1276, 51.5072],
         zoom: 10,
       });
@@ -39,10 +39,10 @@ export default function Map() {
       mapInstance.current?.remove();
       mapInstance.current = null;
     };
-  }, [current, current?.location]);
+  }, [forecast, forecast?.location]);
 
   return (
-    current && (
+    forecast && (
       <div
         ref={mapContainer}
         style={{ height: 244 }}

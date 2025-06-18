@@ -6,6 +6,11 @@ const dateUtil = {
     return dateTime.toFormat("h:mm a");
   },
 
+  epochToHour(epoch: number) {
+    const dateTime = DateTime.fromSeconds(epoch);
+    return dateTime.toFormat("h a");
+  },
+
   epochToDate(epoch: number) {
     const dateTime = DateTime.fromSeconds(epoch);
     return dateTime.toFormat("dd, LLLL yyyy");

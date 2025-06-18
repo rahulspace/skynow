@@ -8,6 +8,7 @@ import { useGeolocation } from "@/hooks/useGeolocation";
 import { useEffect } from "react";
 import useWeatherStore from "@/stores/weatherStore";
 import Forecast from "@/components/Forecast";
+import Summary from "@/components/Summary";
 
 export default function Home() {
   const { location } = useGeolocation();
@@ -29,6 +30,9 @@ export default function Home() {
         </div>
         <CitiesWeather />
         <Forecast />
+        <div className="md:col-span-3">
+          <Summary />
+        </div>
       </div>
     </div>
   );
