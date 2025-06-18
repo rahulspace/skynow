@@ -19,19 +19,27 @@ export default function Home() {
   }, [location, replaceLocation]);
 
   return (
-    <div className="font-bold min-h-screen bg-linear-65 from-fuchsia-300 to-fuchsia-200 flex flex-col gap-8 p-5">
-      <div className="max-w-52">
-        <LocationSearch />
-      </div>
-      <div className="grid md:grid-cols-3 lg:grid-cols-4 gap-5">
-        <CurrentWeather />
-        <div className="md:col-span-2">
-          <Map />
+    <div className="font-bold min-h-screen bg-linear-65 from-fuchsia-300 to-fuchsia-200">
+      <div className="flex flex-col gap-8 p-5 container mx-auto">
+        <div className="max-w-52">
+          <LocationSearch />
         </div>
-        <CitiesWeather />
-        <Forecast />
-        <div className="md:col-span-3">
-          <Summary />
+        <div className="grid md:grid-cols-4 gap-5">
+          <div className="md:col-span-2 xl:col-span-1">
+            <CurrentWeather />
+          </div>
+          <div className="md:col-span-2">
+            <Map />
+          </div>
+          <div className="md:col-span-2 xl:col-span-1">
+            <CitiesWeather />
+          </div>
+          <div className="md:col-span-2 xl:col-span-1">
+            <Forecast />
+          </div>
+          <div className="md:col-span-4 xl:col-span-3">
+            <Summary />
+          </div>
         </div>
       </div>
     </div>

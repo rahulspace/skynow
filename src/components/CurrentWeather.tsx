@@ -12,13 +12,15 @@ export default function CurrentWeather() {
   return (
     forecast && (
       <Card>
-        <div className="flex items-start justify-between gap-2">
-          <h5>Current Weather</h5>
-          <p>{forecast.location.name}</p>
+        <div className="flex items-baseline justify-between gap-2">
+          <div>
+            <h5 className="whitespace-nowrap">Current Weather</h5>
+            <h6 className="text-xs text-slate-200 font-light">
+              {dateUtil.epochToTime(forecast.location.localtime_epoch)}
+            </h6>
+          </div>
+          <p className="break-all text-sm">{forecast.location.name}</p>
         </div>
-        <h6 className="text-xs text-slate-200 font-light">
-          {dateUtil.epochToTime(forecast.location.localtime_epoch)}
-        </h6>
         <div className="mt-4 flex gap-5">
           <Image
             src={urlUtil.appendWithHttps(forecast.current.condition.icon)}

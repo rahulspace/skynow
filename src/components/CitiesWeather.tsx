@@ -26,7 +26,7 @@ export default function CitiesWeather() {
 
   return (
     !isEmpty(cities) && (
-      <Card>
+      <Card className="h-full">
         <div className="flex justify-between items-center">
           <h5>Popular Cities</h5>
           <a

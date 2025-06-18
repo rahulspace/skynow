@@ -7,7 +7,7 @@ export default function Forecast() {
 
   return (
     forecast && (
-      <Card>
+      <Card className="h-full">
         <div className="flex justify-between items-center">
           <h5>Forecast</h5>
         </div>
