@@ -18,7 +18,7 @@ export default function Header() {
   }, [location, replaceLocation]);
 
   return (
-    <div className="flex justify-between items-center">
+    <div className="flex justify-between items-center gap-5">
       <div className="max-w-52">
         <LocationSearch />
       </div>
