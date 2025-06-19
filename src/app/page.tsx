@@ -3,12 +3,12 @@
 import CitiesWeather from "@/components/CitiesWeather";
 import CurrentWeather from "@/components/CurrentWeather";
 import Map from "@/components/Map";
-import LocationSearch from "@/components/LocationSearch";
 import { useGeolocation } from "@/hooks/useGeolocation";
 import { useEffect } from "react";
 import useWeatherStore from "@/stores/weatherStore";
 import Forecast from "@/components/Forecast";
 import Summary from "@/components/Summary";
+import Header from "@/components/Header";
 
 export default function Home() {
   const { location } = useGeolocation();
@@ -21,9 +21,7 @@ export default function Home() {
   return (
     <div className="font-bold min-h-screen bg-linear-65 from-fuchsia-400 to-fuchsia-300">
       <div className="flex flex-col gap-8 p-5 container mx-auto">
-        <div className="max-w-52">
-          <LocationSearch />
-        </div>
+        <Header />
         <div className="grid md:grid-cols-4 gap-5">
           <div className="md:col-span-2 xl:col-span-1">
             <CurrentWeather />

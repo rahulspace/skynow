@@ -6,6 +6,7 @@ import Image from "next/image";
 
 interface Props {
   day: ForecastDay;
+  timezone: string;
 }
 
 export default function ForecastItem(props: Props) {
@@ -23,7 +24,9 @@ export default function ForecastItem(props: Props) {
           0
         )}° / ${round(props.day.day.maxtemp_c, 0)}°`}</p>
       </div>
-      <p className="text-xs">{dateUtil.epochToDate(props.day.date_epoch)}</p>
+      <p className="text-xs">
+        {dateUtil.epochToDate(props.day.date_epoch, props.timezone)}
+      </p>
     </div>
   );
 }

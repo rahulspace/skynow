@@ -10,7 +10,9 @@ export default function Summary() {
 
   const odds = currentDay.hour.filter((_, index) => index % 2 === 1);
   const data = odds.map((hour) => hour.temp_c);
-  const times = odds.map((hour) => dateUtil.epochToHour(hour.time_epoch));
+  const times = odds.map((hour) =>
+    dateUtil.epochToHour(hour.time_epoch, forecast.location.tz_id)
+  );
 
   return (
     forecast && (
@@ -18,7 +20,7 @@ export default function Summary() {
         <div className="flex justify-between items-center">
           <h5>Summary</h5>
         </div>
-        <div className="flex flex-col mt-4 gap-3">
+        <div className="flex flex-col gap-3">
           <Chart data={data} categories={times} />
         </div>
       </Card>

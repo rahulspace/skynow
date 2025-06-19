@@ -16,7 +16,10 @@ export default function CurrentWeather() {
           <div>
             <h5 className="whitespace-nowrap">Current Weather</h5>
             <h6 className="text-xs text-slate-200 font-light">
-              {dateUtil.epochToTime(forecast.location.localtime_epoch)}
+              {dateUtil.epochToTime(
+                forecast.current.last_updated_epoch,
+                forecast.location.tz_id
+              )}
             </h6>
           </div>
           <p className="break-all text-sm">{forecast.location.name}</p>

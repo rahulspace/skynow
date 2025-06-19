@@ -13,7 +13,11 @@ export default function Forecast() {
         </div>
         <div className="flex flex-col mt-4 gap-3">
           {forecast.forecast.forecastday.map((forecastday) => (
-            <ForecastItem day={forecastday} key={forecastday.date} />
+            <ForecastItem
+              day={forecastday}
+              timezone={forecast.location.tz_id}
+              key={forecastday.date}
+            />
           ))}
         </div>
       </Card>

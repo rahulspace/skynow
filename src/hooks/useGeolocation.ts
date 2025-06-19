@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 
 type Geolocation = {
   lat: number;
@@ -15,7 +15,7 @@ export function useGeolocation() {
   const [error, setError] = useState<GeolocationError | null>(null);
   const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
+  const getLocation = useCallback(() => {
     if (!navigator.geolocation) {
       setError({
         code: 0,
@@ -25,12 +25,14 @@ export function useGeolocation() {
       return;
     }
 
+    setLoading(true);
     navigator.geolocation.getCurrentPosition(
       (position) => {
         setLocation({
           lat: position.coords.latitude,
           lng: position.coords.longitude,
         });
+        setError(null);
         setLoading(false);
       },
       (err) => {
@@ -40,5 +42,9 @@ export function useGeolocation() {
     );
   }, []);
 
-  return { location, error, loading };
+  useEffect(() => {
+    getLocation();
+  }, [getLocation]);
+
+  return { location, error, loading, getLocation };
 }
