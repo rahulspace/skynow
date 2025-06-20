@@ -49,7 +49,7 @@ export default function LocationSearch() {
           value={location}
           placeholder="Search for location"
           onChange={handleChange}
-          className="w-full outline-none text-slate-50 placeholder:text-slate-200 text-sm font-light"
+          className="w-full outline-none text-slate-50 placeholder:text-slate-200 text-base font-light"
         />
       </div>
       {!isEmpty(locations) && (
