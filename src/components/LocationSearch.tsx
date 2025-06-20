@@ -53,7 +53,7 @@ export default function LocationSearch() {
         />
       </div>
       {!isEmpty(locations) && (
-        <div className="absolute top-10 py-2 bg-slate-950/5 rounded-lg w-full backdrop-blur-sm">
+        <div className="absolute top-12 py-2 bg-slate-950/5 rounded-lg w-full backdrop-blur-sm">
           {locations.map((location) => {
             return (
               <LocationSearchOption
