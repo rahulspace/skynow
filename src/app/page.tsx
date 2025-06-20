@@ -19,14 +19,14 @@ export default function Home() {
   }, [location, replaceLocation]);
 
   return (
-    <div className="font-bold min-h-screen overflow-x-hidden">
+    <div className="font-bold min-h-screen">
       <div className="flex flex-col gap-8 p-5 container mx-auto">
         <Header />
         <div className="grid grid-cols-1 md:grid-cols-4 gap-5">
           <div className="w-full md:col-span-2 xl:col-span-1">
             <CurrentWeather />
           </div>
-          <div className="w-full md:col-span-2 xl:col-span-2 overflow-hidden">
+          <div className="w-full md:col-span-2 xl:col-span-2">
             <Map />
           </div>
           <div className="w-full md:col-span-2 xl:col-span-1">
