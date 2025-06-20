@@ -25,7 +25,7 @@ export default function RootLayout(props: Props) {
         <meta name="apple-mobile-web-app-title" content="SkyNow" />
       </head>
       <body
-        className={`${nunitoSans.variable} antialiased text-slate-100 font-normal`}
+        className={`${nunitoSans.variable} antialiased text-slate-100 font-normal  bg-linear-65 from-fuchsia-400 to-fuchsia-300`}
       >
         {props.children}
         <Analytics />
