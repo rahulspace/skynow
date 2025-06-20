@@ -10,7 +10,7 @@ const nunitoSans = Nunito_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "SkyNow",
+  title: "SkyNow | Sleek and simple weather app",
   description: "Sleek and simple weather app that delivers real-time forecasts",
 };
 
@@ -21,6 +21,9 @@ interface Props {
 export default function RootLayout(props: Props) {
   return (
     <html lang="en">
+      <head>
+        <meta name="apple-mobile-web-app-title" content="SkyNow" />
+      </head>
       <body
         className={`${nunitoSans.variable} antialiased text-slate-100 font-normal`}
       >
