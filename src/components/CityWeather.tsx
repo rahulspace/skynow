@@ -8,8 +8,8 @@ interface Props {
 
 export default function CityWeather(props: Props) {
   return (
-    <div className="flex items-center justify-between">
-      <div className="flex gap-3 items-center">
+    <div className="flex items-center justify-between gap-2">
+      <div className="flex gap-3 items-center flex-shrink-0">
         <Image
           src={urlUtil.appendWithHttps(props.city.current.condition.icon)}
           alt={props.city.current.condition.text}
